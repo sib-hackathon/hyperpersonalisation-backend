@@ -1,3 +1,7 @@
 from django.contrib import admin
+from suggestions.models import Button
 
-# Register your models here.
+class ButtonAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+admin.site.register(Button, ButtonAdmin)
