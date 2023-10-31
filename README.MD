@@ -15,3 +15,43 @@
 ### User Data
 1. http://127.0.0.1:8000/accounts/api/profile (GET)
 2. http://127.0.0.1:8000/accounts/api/profile (POST)
+
+### Option Saving
+1. http://127.0.0.1:8000/suggestions/option-suggestions (GET)
+Sample Get Data
+```
+[
+  {
+    "button_id": 2,
+    "button_name": "Test 2",
+    "count": 1
+  }
+]
+```
+2. http://127.0.0.1:8000/suggestions/option-suggestions (POST)  
+Sample Post Data
+```
+{
+    "button_id": 2
+}
+```
+
+### Option Suggesting
+1. http://127.0.0.1:8000/suggestions/option-saving (GET)  
+Sample Get Data
+```
+[
+  {
+    "button_id": 2,
+    "button_name": "Test 2",
+    "count": 1
+  }
+]
+```
+2. http://127.0.0.1:8000/suggestions/option-saving (POST)
+Sample Post Data
+```
+{
+    "button_id": 2
+}
+```
