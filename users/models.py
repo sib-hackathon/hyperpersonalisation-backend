@@ -104,3 +104,11 @@ class User(AbstractBaseUser,PermissionsMixin):
     if (self.balance - 500) >= amount:
         return True
     return False
+  
+
+class GeneralSettings(models.Model):
+   user = models.OneToOneField(User, on_delete=models.CASCADE)
+   e_lock_enabled = models.BooleanField(default=False)
+   e_lock_enabled_date = models.DateTimeField(auto_now_add=True)
+   e_lock_updated_date = models.DateTimeField(auto_now=True)
+   debit_card_limit = models.DecimalField(max_digits=10, decimal_places=2, null=True)
