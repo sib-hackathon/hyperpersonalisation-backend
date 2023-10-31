@@ -82,6 +82,11 @@ class User(AbstractBaseUser,PermissionsMixin):
   def account_number(self):
      return self.id
   
+  @property
+  def age(self):
+    import datetime
+    return int((datetime.date.today() - self.date_of_birth).days / 365.25 )
+  
 
   def debit(self, amount):
     if self.check_balance(amount):
