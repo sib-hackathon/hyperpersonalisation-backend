@@ -132,6 +132,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #updating the custom user model
 AUTH_USER_MODEL = "users.User"
 
+REST_FRAMEWORK = {  }
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
