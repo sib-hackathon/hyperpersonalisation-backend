@@ -50,9 +50,8 @@ class User(AbstractBaseUser,PermissionsMixin):
   name = models.CharField(null=False, max_length=100)
   phone = models.IntegerField(null=False,unique=True)
   date_of_birth = models.DateField()
-  account_number = models.CharField(max_length=20, unique=True)
   account_type = models.CharField(max_length=3, choices=ACCOUNT_TYPES)
-  balance = models.DecimalField(max_digits=10, decimal_places=2)
+  balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
   overdraft_limit = models.DecimalField(max_digits=10, decimal_places=2)
   date_opened = models.DateField()
   branch_number = models.CharField(max_length=20)
@@ -78,3 +77,13 @@ class User(AbstractBaseUser,PermissionsMixin):
 
   def has_module_perms(self, app_label):
       return True
+
+  @property
+  def account_number(self):
+     return self.id
+  
+ 
+  def check_balance(self, amount):
+     if (self.balance - 500) >= amount:
+         return True
+     return False
