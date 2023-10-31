@@ -82,8 +82,20 @@ class User(AbstractBaseUser,PermissionsMixin):
   def account_number(self):
      return self.id
   
+
+  def debit(self, amount):
+    if self.check_balance(amount):
+        self.balance -= amount
+        self.save()
+        return True
+    return False
  
+  def credit(self, amount):
+    self.balance += amount
+    self.save()
+    return True
+
   def check_balance(self, amount):
-     if (self.balance - 500) >= amount:
-         return True
-     return False
+    if (self.balance - 500) >= amount:
+        return True
+    return False
