@@ -1,6 +1,7 @@
 ## Configuration
 
 1. `pip install requirements.txt`
+1. `python setup.py`
 2. `python manage.py makemigrations`
 3. `python manage.py migrate`
 4. `python manage.py createsuperuser`
