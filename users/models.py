@@ -64,7 +64,7 @@ class User(AbstractBaseUser,PermissionsMixin):
   is_superuser = models.BooleanField(default = False)
 
   USERNAME_FIELD = 'email'
-  REQUIRED_FIELDS = ['name','phone', 'date_of_birth', 'account_number', 'account_type', 'balance', 'overdraft_limit', 'date_opened', 'branch_number']
+  REQUIRED_FIELDS = ['name','phone', 'date_of_birth', 'account_type', 'balance', 'overdraft_limit', 'date_opened', 'branch_number']
 
   objects = UserManager()
 
@@ -112,3 +112,6 @@ class GeneralSettings(models.Model):
    e_lock_enabled_date = models.DateTimeField(auto_now_add=True)
    e_lock_updated_date = models.DateTimeField(auto_now=True)
    debit_card_limit = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+
+   def __str__(self):
+      return self.user.name
