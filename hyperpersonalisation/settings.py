@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'users',
     'suggestions',
     'corsheaders',
+    'notifications',
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,6 +65,10 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
   'http://localhost:50597',
 )
+
+CRONJOBS = [
+    ('0 2 * * *', 'django.core.management.call_command', ['notify_users'])
+]
 
 
 ROOT_URLCONF = 'hyperpersonalisation.urls'
