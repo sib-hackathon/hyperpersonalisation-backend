@@ -56,3 +56,24 @@ Sample Post Data
     "button_id": 2
 }
 ```
+
+### Notification
+1. http://127.0.0.1:8000/notification (GET)  
+Sample Get Data
+```
+{
+  "id": int,
+  "user": "uuid",
+  "title": "E-Lock Enabled",
+  "message": "You have enabled the E-Lock for a while and has not been disabled. Please disable it if you are done using it.",
+  "date_created": "2023-11-01T04:59:35.225349Z",
+  "date_updated": "2023-11-01T05:23:02.872374Z"
+}
+```
+2. http://127.0.0.1:8000/notification/<int:id>
+Sample Post Data
+```
+{
+  "read": true
+}
+```
