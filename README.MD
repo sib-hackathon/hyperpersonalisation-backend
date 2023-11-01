@@ -18,7 +18,7 @@
 2. http://127.0.0.1:8000/accounts/api/profile (POST)
 
 ### Option Saving
-1. http://127.0.0.1:8000/suggestions/option-suggestions (GET)
+1. http://127.0.0.1:8000/suggestions/option-suggestions (GET)  
 Sample Get Data
 ```
 [
@@ -70,7 +70,7 @@ Sample Get Data
   "date_updated": "2023-11-01T05:23:02.872374Z"
 }
 ```
-2. http://127.0.0.1:8000/notification/<int:id>
+2. http://127.0.0.1:8000/notification/<int:id>  
 Sample Post Data
 ```
 {
