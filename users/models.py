@@ -8,15 +8,16 @@ class UserManager(BaseUserManager):
   Custom Django User Manager for the Custom User Model Created.
   """
   def create_user(self, email, name, phone,password=None, *args, **kwargs):
-      user = self.model(
-          email = self.normalize_email(email),
-          name = name,
-          phone = phone,
-          *args, **kwargs
-      )
-      user.set_password(password)
-      user.save(using = self._db)
-      return user
+        user = self.model(
+            email=self.normalize_email(email),
+            name=name,
+            phone=phone,
+            *args, **kwargs
+        )
+        user.set_password(password)  # This line sets the hashed password.
+        user.save(using=self._db)
+        return user
+
 
   def create_superuser(self, email,name,phone,password=None, *args, **kwargs):
       user = self.create_user(
@@ -52,7 +53,6 @@ class User(AbstractBaseUser,PermissionsMixin):
   date_of_birth = models.DateField()
   account_type = models.CharField(max_length=3, choices=ACCOUNT_TYPES)
   balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-  overdraft_limit = models.DecimalField(max_digits=10, decimal_places=2)
   date_opened = models.DateField()
   branch_number = models.CharField(max_length=20)
   created_at = models.DateTimeField(auto_now=True)
@@ -64,7 +64,7 @@ class User(AbstractBaseUser,PermissionsMixin):
   is_superuser = models.BooleanField(default = False)
 
   USERNAME_FIELD = 'email'
-  REQUIRED_FIELDS = ['name','phone', 'date_of_birth', 'account_type', 'balance', 'overdraft_limit', 'date_opened', 'branch_number']
+  REQUIRED_FIELDS = ['name','phone', 'date_of_birth', 'account_type', 'balance', 'date_opened', 'branch_number']
 
   objects = UserManager()
 
@@ -72,9 +72,9 @@ class User(AbstractBaseUser,PermissionsMixin):
       return self.name
 
 
-  def has_perm(self, perm, obj = None):
+  def has_perm(self, perm, obj=None):
       return self.is_admin
-
+  
   def has_module_perms(self, app_label):
       return True
 
@@ -111,7 +111,7 @@ class GeneralSettings(models.Model):
    e_lock_enabled = models.BooleanField(default=False)
    e_lock_enabled_date = models.DateTimeField(auto_now_add=True)
    e_lock_updated_date = models.DateTimeField(auto_now=True)
-   debit_card_limit = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+   account_debit_limit = models.DecimalField(max_digits=10, decimal_places=2, null=True)
 
    def __str__(self):
       return self.user.name

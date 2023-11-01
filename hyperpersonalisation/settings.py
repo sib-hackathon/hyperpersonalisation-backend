@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'suggestions',
     'corsheaders',
     'notifications',
+    'transactions',
     'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
