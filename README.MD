@@ -11,7 +11,7 @@
 ## Available APIs
 ### JWT Token and Refresh
 1. http://127.0.0.1:8000/accounts/api/token/ (POST)
-2. http://127.0.0.1:8000/accounts/api/token/refresh (POST)
+2. http://127.0.0.1:8000/accounts/api/token/refresh/ (POST)
 
 ### User Data
 1. http://127.0.0.1:8000/accounts/api/profile (GET)
